@@ -2,9 +2,10 @@
 #
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-
+import scrapy
 from scrapy import signals
-
+import time
+from selenium import webdriver
 # useful for handling different item types with a single interface
 from itemadapter import is_item, ItemAdapter
 

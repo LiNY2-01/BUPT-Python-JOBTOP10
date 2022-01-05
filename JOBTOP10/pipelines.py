@@ -35,7 +35,7 @@ class Jobtop10Pipeline:
                             fieldnames=["job_title", "job_date", "job_views"])
         self.XDUJOB_writer.writeheader()
         #create xdu job csv file and write header
-        self.UESTCJOB_file = open('XIDIAN_1.csv', 'w+',
+        self.UESTCJOB_file = open('CHENGDIAN_1.csv', 'w+',
                                 newline='', encoding='GB2312')
         self.UESTCJOB_writer = csv.DictWriter(self.UESTCJOB_file,
                                             fieldnames=["job_title", "job_date", "job_views"])

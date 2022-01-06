@@ -21,8 +21,8 @@ class BUPTJOBSpider(scrapy.spiders.Spider):
     def parse(self, response):
         data = json.loads(response.body)   # 获取网页的json数据
         jobpost_list = data['object']['list']
-        print("now pagenum:"+str(data['object']['pageNo']))
-        print("job len:"+str(len(jobpost_list)))
+        print("[BUPT]now pagenum:"+str(data['object']['pageNo']))
+        print("[BUPT]job len:"+str(len(jobpost_list)))
         for jobpost in jobpost_list:
 
             if datetime.strptime(jobpost["startTime"], '%Y-%m-%d %H:%M:%S') < datetime.strptime('2021-09-01', '%Y-%m-%d'):

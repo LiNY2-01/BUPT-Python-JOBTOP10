@@ -29,11 +29,10 @@ class UESTCJOBSpider(scrapy.spiders.Spider):
     #     #                         signal=signals.spider_closed)
     #     # return spider
     #     pass
-
-    def spider_closed(self, spider):
-        # spider.driver.close()  # 关闭浏览器
-        print("==========爬虫结束！==========")
-        spider.logger.info('Spider closed:%s', spider.name)
+    # def spider_closed(self, spider):
+    #     # spider.driver.close()  # 关闭浏览器
+    #     print("==========爬虫结束！==========")
+    #     spider.logger.info('Spider closed:%s', spider.name)
 
     def start_requests(self):
         yield scrapy.Request('https://yjsjob.uestc.edu.cn/coread/listeminfo.action?page=1',
@@ -41,8 +40,8 @@ class UESTCJOBSpider(scrapy.spiders.Spider):
     def parse(self, response):  # 解析爬取的内容
         data = json.loads(response.body)   # 获取网页的json数据
         jobpost_list = data['list']
-        print("now pagenum:"+str(data['page']))
-        print("job len:"+str(len(jobpost_list)))
+        print("[UESTC]now pagenum:"+str(data['page']))
+        print("[UESTC]job len:"+str(len(jobpost_list)))
         for jobpost in jobpost_list:
             jobtime=jobpost["date"]
             jobtime = jobtime.replace("年", '-').replace("月", '-').replace("日", '')

@@ -79,10 +79,15 @@ class Jobtop10DownloaderMiddleware:
         # - or return a Request object
         # - or raise IgnoreRequest: process_exception() methods of
         #   installed downloader middleware will be called
-        spider.driver.get(request.url)
-        time.sleep(4)  ###等候几秒钟比较保险
-        return scrapy.http.HtmlResponse(url=request.url, body=spider.driver.page_source.encode('utf-8'),
+        re_method = request.meta.get('page', 'default')
+        if re_method=='default':
+            spider.driver.get(request.url)
+            time.sleep(3)  ###等候几秒钟比较保险
+            return scrapy.http.HtmlResponse(url=request.url, body=spider.driver.page_source.encode('utf-8'),
                                             encoding='utf-8', request=request, status=200)
+        elif re_method=='stastic':
+            return None
+            
 
     def process_response(self, request, response, spider):
         # Called with the response returned from the downloader.

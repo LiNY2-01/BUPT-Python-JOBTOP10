@@ -24,7 +24,7 @@ class BUPTJOBSpider(scrapy.spiders.Spider):
         print("job len:"+str(len(jobpost_list)))
         for jobpost in jobpost_list:
 
-            if datetime.strptime(jobpost["startTime"], '%Y-%m-%d %H:%M:%S') < datetime.strptime('2021-12-21', '%Y-%m-%d'):
+            if datetime.strptime(jobpost["startTime"], '%Y-%m-%d %H:%M:%S') < datetime.strptime('2021-09-01', '%Y-%m-%d'):
                 break
             id = jobpost['id']
             yield scrapy.Request(url=f'https://job.bupt.edu.cn/f/recruitmentinfo/ajax_show?recruitmentId={id}', 

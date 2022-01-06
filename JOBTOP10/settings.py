@@ -18,20 +18,21 @@ USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:94.0) Gecko/20100101 
 COMMANDS_MODULE = "JOBTOP10.multi_cmd"
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
-LOG_LEVEL = "ERROR"
+LOG_LEVEL = "INFO"
+#COOKIES_ENABLED = False
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+# DOWNLOAD_DELAY = 0
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+# COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -52,6 +53,8 @@ LOG_LEVEL = "ERROR"
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     'JOBTOP10.middlewares.Jobtop10DownloaderMiddleware': 543,
+    # 'scrapy.downloadermiddlewares.retry.RetryMiddleware': 550,
+    # 'scrapy.downloadermiddlewares.ajaxcrawl.AjaxCrawlMiddleware': 543,
 }
 
 # Enable or disable extensions

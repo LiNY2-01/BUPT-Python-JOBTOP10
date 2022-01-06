@@ -12,6 +12,7 @@ class BUPTJOBSpider(scrapy.spiders.Spider):
     name="BUPTJOB"
     allowed_domains = ["job.bupt.edu.cn"]
     # start_urls = ['https://job.bupt.edu.cn/f/recruitmentinfo/ajax_frontRecruitinfo?pageNo=']
+    
     pagenum=1
     def start_requests(self):
         yield scrapy.Request('https://job.bupt.edu.cn/f/recruitmentinfo/ajax_frontRecruitinfo?pageNo=',
@@ -29,11 +30,11 @@ class BUPTJOBSpider(scrapy.spiders.Spider):
             id = jobpost['id']
             yield scrapy.Request(url=f'https://job.bupt.edu.cn/f/recruitmentinfo/ajax_show?recruitmentId={id}', 
                                  callback=self.parse_details, meta={'method': "stastic"})
-        else:
-            self.n=data['object']['pageNo']+1
-            if not data['object']['lastPage']:
-                yield scrapy.Request(url=f'https://job.bupt.edu.cn/f/recruitmentinfo/ajax_frontRecruitinfo?pageNo={self.n}', 
-                                     callback=self.parse, meta={'method': "stastic"})
+        
+        self.n=data['object']['pageNo']+1
+        if not data['object']['lastPage']:
+            yield scrapy.Request(url=f'https://job.bupt.edu.cn/f/recruitmentinfo/ajax_frontRecruitinfo?pageNo={self.n}', 
+                                    callback=self.parse, meta={'method': "stastic"})
         
     def parse_details(self, response):
         item = Jobtop10Item()

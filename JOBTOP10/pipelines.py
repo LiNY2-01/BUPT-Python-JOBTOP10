@@ -24,19 +24,20 @@ class Jobtop10Pipeline:
         except Exception as err:
             print(err)
     def open_spider(self,spider):
-        self.BUPTJOB_file=open('BEIYOU_1.csv','w+',newline='',encoding='GB2312')
+        self.BUPTJOB_file = open('BEIYOU_1.csv', 'w+',
+                                 newline='', encoding='utf-8')
         self.BUPTJOB_writer = csv.DictWriter(self.BUPTJOB_file, 
                               fieldnames=["job_title","job_date","job_views","job_nums"])
         self.BUPTJOB_writer.writeheader()
         #create bupt job csv file and write header
         self.XDUJOB_file = open('XIDIAN_1.csv', 'w+',
-                                 newline='', encoding='GB2312')
+                                newline='', encoding='utf-8')
         self.XDUJOB_writer = csv.DictWriter(self.XDUJOB_file,
                             fieldnames=["job_title", "job_date", "job_views"])
         self.XDUJOB_writer.writeheader()
         #create xdu job csv file and write header
         self.UESTCJOB_file = open('CHENGDIAN_1.csv', 'w+',
-                                newline='', encoding='GB2312')
+                                  newline='', encoding='utf-8')
         self.UESTCJOB_writer = csv.DictWriter(self.UESTCJOB_file,
                                             fieldnames=["job_title", "job_date", "job_views"])
         self.UESTCJOB_writer.writeheader()

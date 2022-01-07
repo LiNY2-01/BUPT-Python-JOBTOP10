@@ -82,7 +82,7 @@ class Jobtop10DownloaderMiddleware:
         re_method = request.meta.get('method', 'default')
         if re_method=='default':
             spider.driver.get(request.url)
-            time.sleep(3)  ###等候几秒钟比较保险
+            time.sleep(3)  # 等待页面加载完成
             return scrapy.http.HtmlResponse(url=request.url, body=spider.driver.page_source.encode('utf-8'),
                                             encoding='utf-8', request=request, status=200)
         elif re_method == 'stastic':
